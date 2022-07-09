@@ -137,3 +137,30 @@ print("Entities" ,[(ent.text,ent.label_) for ent in doc.ents])
 #Once the output is satisfactory, you can save the model and load it whenever needed
 # Save the  model to directory
 
+output_dir = "/content/"
+nlp.to_disk(output_dir)
+print("Saved mode to : ",output_dir)
+
+
+#Load the saved model and predict
+nlp_updated = spacy.load(output_dir)
+doc = nlp_updated("Fridge can be ordered in FlipKart")
+
+print("Entities : ",[(ent.text,ent.label_) for ent in doc.ents]))
+
+# How to train NER from a blank SpaCy model
+
+import spacy
+
+nlp = spancy.blank("en")
+nlp.add_pipeline(nlp.create_pipeline('ner'))
+
+#start training for here
+
+
+#Visualize NER
+# from bs4 import BeautifulSoup.  => used to clean data retrieved from web
+
+from spacy import displacy
+
+displacy.render(nlp("doc"), jupyter = True,style='ent')
